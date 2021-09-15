@@ -3,8 +3,7 @@ from discord.ext import commands
 import youtube_dl
 import asyncio
 import os
-from dotenv import load_dotenv
-load_dotenv()
+
 
 client = commands.Bot(command_prefix="-")
 
@@ -12,7 +11,7 @@ client = commands.Bot(command_prefix="-")
 async def on_ready():
     print(f"{client.user.name} is ready.")
 
-@client.event
+'''@client.event
 async def on_voice_state_update(self, member, before, after):
     
     if not member.id == self.bot.user.id:
@@ -29,7 +28,7 @@ async def on_voice_state_update(self, member, before, after):
             if time == 600:
                 await voice.disconnect()
             if not voice.is_connected():
-                break
+                break'''
 
 @client.command()
 async def play(ctx, url):
@@ -44,13 +43,15 @@ async def play(ctx, url):
         YDL_OPTIONS = {'format':"bestaudio"}
         vc = ctx.voice_client
 
+        await ctx.send('<:Buenardo:784888763343306762>')
+
         with youtube_dl.YoutubeDL(YDL_OPTIONS) as ydl:
             info = ydl.extract_info(url, download=False)
             url2 = info['formats'] [0] ['url']
         source = await discord.FFmpegOpusAudio.from_probe(url2, **FFMPEG_OPTIONS)
         vc.play(source)
     except:
-        await ctx.send('usar -join primero')
+        await ctx.send('no hay nadie en canal')
 
 
 @client.command()
@@ -58,6 +59,7 @@ async def leave(ctx):
     voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
     if voice.is_connected():
         await voice.disconnect()
+        await ctx.send('<:memperra:784921504478527508>')
     else:
         await ctx.send('???????')
 
@@ -84,6 +86,6 @@ async def resume(ctx):
 async def stop(ctx):
     voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
     voice.stop()
-    await ctx.send('<:Buenardo:784888763343306762>')
+    await ctx.send('<:TAVYRON:821417147435712573>')
 
-client.run(os.getenv('TOKEN_KEY'))
+client.run()
