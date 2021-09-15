@@ -1,5 +1,5 @@
 aiodns==3.0.0
-aiohttp==3.7.4.post0
+aiohttp>=3.7.4
 altgraph==0.17
 async-timeout==3.0.1
 attrs==19.1.0
@@ -60,8 +60,6 @@ python-dateutil==2.8.1
 python-decouple==3.4
 python-dotenv==0.19.0
 pytz==2021.1
-pywin32==301
-pywin32-ctypes==0.2.0
 pyxdg==0.27
 pyzmq==22.1.0
 requests==2.25.1
@@ -75,7 +73,7 @@ traitlets==5.0.5
 typing==3.7.4.3
 typing-extensions==3.10.0.0
 undetected-chromedriver==3.0.2
-urllib3==1.26.4
+urllib3>=1.26.5
 validator-collection==1.5.0
 wcwidth==0.2.5
 webdriver-manager==3.4.2
