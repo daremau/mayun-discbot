@@ -35,9 +35,7 @@ async def play(ctx, url):
         
         if ctx.voice_client is None:
             await voice_channel.connect()
-        else:
-            await ctx.send('no hay nadie en canal')
-        
+       
         ctx.voice_client.stop()
         FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
         YDL_OPTIONS = {'format':"bestaudio"}
