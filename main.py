@@ -3,6 +3,9 @@ from discord.ext import commands
 import youtube_dl
 import asyncio
 import os
+from boto.s3.connection import S3Connection
+
+token = S3Connection(os.environ['TOKEN'])
 
 
 client = commands.Bot(command_prefix="-")
@@ -88,4 +91,4 @@ async def stop(ctx):
     voice.stop()
     await ctx.send('<:TAVYRON:821417147435712573>')
 
-client.run()
+client.run(token)
