@@ -1,10 +1,7 @@
 import discord
 from discord.ext import commands
 import youtube_dl
-import asyncio
 import os
-
-
 
 client = commands.Bot(command_prefix="-")
 
@@ -38,21 +35,23 @@ async def play(ctx, url):
         
         if ctx.voice_client is None:
             await voice_channel.connect()
+        else:
+            await ctx.send('no hay nadie en canal')
         
         ctx.voice_client.stop()
         FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
         YDL_OPTIONS = {'format':"bestaudio"}
         vc = ctx.voice_client
-
+        
         await ctx.send('<:Buenardo:784888763343306762>')
-
+        
         with youtube_dl.YoutubeDL(YDL_OPTIONS) as ydl:
             info = ydl.extract_info(url, download=False)
             url2 = info['formats'] [0] ['url']
         source = await discord.FFmpegOpusAudio.from_probe(url2, **FFMPEG_OPTIONS)
         vc.play(source)
     except:
-        await ctx.send('no hay nadie en canal')
+        print('no se encuentra ffmpeg')
 
 
 @client.command()
