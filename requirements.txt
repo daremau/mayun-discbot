@@ -81,4 +81,4 @@ websockets==9.1
 xlrd==2.0.1
 XlsxWriter==1.4.3
 yarl==1.6.3
-youtube-dl==2021.6.6
+youtube-dl
