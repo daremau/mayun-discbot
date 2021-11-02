@@ -78,4 +78,4 @@ async def stop(ctx):
 async def pilin(ctx):
     await ctx.send("pilin")
 
-client.run('OTAxOTgzNDg0MDI4MDAyMzM1.YXXzlA.PoYr8cwWqAjoNYemG2wAGktjjf0')
+client.run('ODg3NDU5MTU5MDUyNzgzNjY3.YUEcvw.n4Li5ppg16uU6DVLfSGjN4jOmEM')
